@@ -3,7 +3,7 @@ package map;
 import java.util.List;
 import java.util.*;
 
-public class StreamsMapEX1 {
+public class StreamsMapEX1Integer {
 
     public static void main(String[] args) {
 
