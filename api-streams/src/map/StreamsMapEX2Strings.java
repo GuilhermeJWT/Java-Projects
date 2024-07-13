@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StramsMapEX2Strings {
+public class StreamsMapEX2Strings {
 
     public static void main(String[] args) {
 
