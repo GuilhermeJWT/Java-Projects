@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class StreamsFilterPessoas {
 
@@ -26,7 +27,7 @@ public class StreamsFilterPessoas {
         Optional<Pessoa> pessoaFiltrada = pessoas.stream().filter(i -> i.getIdade() < 20).findAny();
 
         System.out.println(pessoaFiltrada); /*Resultado: Optional[Pessoa{idade=15, nome='Streams', salario=750}]*/
-        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("----------------------------Exemplo 2------------------------------------------");
 
          pessoas.stream()
                 .skip(2) // ignora os 2 primeiros números
@@ -38,6 +39,30 @@ public class StreamsFilterPessoas {
          Pessoa{idade=60, nome='Spring Boot', salario=800},
          Pessoa{idade=58, nome='JSF', salario=950},
          Pessoa{idade=21, nome='JSP', salario=5000},
-         Pessoa{idade=99, nome='AWS', salario=365} */
+         Pessoa{idade=99, nome='AWS', salario=365}
+         */
+
+        System.out.println("----------------------------Exemplo 3------------------------------------------");
+
+                                  // somente as idades com números Pares
+        pessoas.stream().filter(e -> e.getIdade() % 2 == 0).forEach(System.out::println);
+
+        /* Resultado:
+            Pessoa{idade=60, nome='Spring Boot', salario=800}
+            Pessoa{idade=58, nome='JSF', salario=950}
+            Pessoa{idade=100, nome='Jenkins', salario=1258}
+         */
+
+        System.out.println("----------------------------Exemplo 4------------------------------------------");
+
+        List<Integer> idades = pessoas.stream()
+                .filter(i -> i.getIdade() % 2 == 0) // mantém apenas números pares
+                .map(i -> i.getIdade() * 2)
+                .collect(Collectors.toList()); // coleta todos os itens em uma nova lista
+
+        System.out.println(idades);
+
+        /* Resultado: [120, 116, 200] */
+
     }
 }
